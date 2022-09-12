@@ -1,6 +1,13 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+function randomInt(min, max){
+  return Math.floor(Math.random() * (max-min) + min)
+}
+
+function getRandomList(list){
+  return list[randomInt(0, list.length - 1)]
+}
 
 function generatePassword(){
   
@@ -28,29 +35,35 @@ function generatePassword(){
   var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
   var uppercaseList = []
 
-  var passwordbox = []
+  var passwordBox = []
 
   for (var i = 0; i < lowercaseList.length; i++){
     uppercaseList[i] = lowercaseList[i].toUpperCase()
   }
 
   if (userWantNumbers === true){
-    passwordbox.push(numberList)
+    passwordBox.push(numberList)
   }
 
   if (userWantLower === true){
-    passwordbox.push(lowercaseList)
+    passwordBox.push(lowercaseList)
   }
   
   if (userWantUpper === true){
-    passwordbox.push(uppercaseList)
+    passwordBox.push(uppercaseList)
   }
 
   if (userWantSpecial === true){
-    passwordbox.push(specialList)
+    passwordBox.push(specialList)
   }
 
-  console.log(passwordbox)
+var generatedPassword = ""
+
+for (var i = 0; i < passwordLength; i++) {
+  var randomList = getRandomList(passwordBox)
+  var randomChar = getRandomList(randomList)
+  console.log(randomChar)
+}
 }
 
 
