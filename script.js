@@ -24,14 +24,33 @@ function generatePassword(){
   var userWantSpecial = window.confirm("Would you like to include special charaters in your password?")
 
   var numberList = ["0", "1", "2", "3","4","5","6","7","8","9"]
-  var symbolList = ["!","@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "`", "~", "<", ">", "/", "?", ":", ";", "|"]
+  var specialList = ["!","@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "`", "~", "<", ">", "/", "?", ":", ";", "|"]
   var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
   var uppercaseList = []
+
+  var passwordbox = []
 
   for (var i = 0; i < lowercaseList.length; i++){
     uppercaseList[i] = lowercaseList[i].toUpperCase()
   }
 
+  if (userWantNumbers === true){
+    passwordbox.push(numberList)
+  }
+
+  if (userWantLower === true){
+    passwordbox.push(lowercaseList)
+  }
+  
+  if (userWantUpper === true){
+    passwordbox.push(uppercaseList)
+  }
+
+  if (userWantSpecial === true){
+    passwordbox.push(specialList)
+  }
+
+  console.log(passwordbox)
 }
 
 
