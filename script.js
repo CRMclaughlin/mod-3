@@ -2,11 +2,16 @@
 var generateBtn = document.querySelector("#generate");
 
 function randomInt(min, max){
-  return Math.floor(Math.random() * (max-min) + min)
+  if (!max){
+    max = min
+    min = 0
+  }
+  var rand = Math.random()
+  return Math.floor(min*(1-rand) + rand*max)
 }
 
-function getRandomList(list){
-  return list[randomInt(0, list.length - 1)]
+function getRandomItem(list){
+  return list[randomInt(list.length)]
 }
 
 function generatePassword(){
@@ -31,7 +36,7 @@ function generatePassword(){
   var userWantSpecial = window.confirm("Would you like to include special charaters in your password?")
 
   var numberList = ["0", "1", "2", "3","4","5","6","7","8","9"]
-  var specialList = ["!","@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "`", "~", "<", ">", "/", "?", ":", ";", "|"]
+  var specialList = ["!","@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "`", "~", "<", ">", "/", "?", ":", ";|"]
   var lowercaseList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
   var uppercaseList = []
 
@@ -57,13 +62,19 @@ function generatePassword(){
     passwordBox.push(specialList)
   }
 
+  if (passwordBox.length === 0) {
+    passwordBox.push(numberList)
+  }
+
 var generatedPassword = ""
 
 for (var i = 0; i < passwordLength; i++) {
-  var randomList = getRandomList(passwordBox)
-  var randomChar = getRandomList(randomList)
-  console.log(randomChar)
+  var randomList = getRandomItem(passwordBox)
+  var randomChar = getRandomItem(randomList)
+  generatedPassword += randomChar
 }
+
+console.log(generatedPassword)
 }
 
 
