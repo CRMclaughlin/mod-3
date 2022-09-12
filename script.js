@@ -1,6 +1,33 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
+function generatePassword(){
+  
+  var userInput = window.prompt("How many characters do you want your password to be?");
+  
+  var passwordLength = parseInt(userInput)
+
+  if (isNaN(passwordLength)){
+    window.alert("That's not a number!")
+    return
+  } 
+
+  if (passwordLength < 8 || passwordLength > 128){
+    window.alert("Password length must be between 8 and 128 characters")
+    return
+  }
+  
+  var userWantNumbers = window.confirm("Would you like to include numbers in your password?")
+  var userWantLower = window.confirm("Would you like to include lowercase letters in your password?")
+  var userWantUpper = window.confirm("Would you like to include uppercase letters in your password?")
+  var userWantSpecial = window.confirm("Would you like to include special charaters in your password?")
+}  
+
+
+
+
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -12,3 +39,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
