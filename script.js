@@ -47,7 +47,9 @@ if (isNaN(passwordLength)){
 
   var passwordBox = []
 
-  for (var i = 0; i < lowercaseList.length; i++){
+  //  For loop changes lowercase letters to upper case through uppercase method, instead of writing the alphabet twice.
+  // https://www.w3schools.com/js/js_loop_for.asp
+   for (var i = 0; i < lowercaseList.length; i++){
     uppercaseList[i] = lowercaseList[i].toUpperCase()
   }
 
@@ -67,7 +69,7 @@ if (isNaN(passwordLength)){
   if (userWantSpecial === true){
     passwordBox.push(specialList)
   }
-
+// If no modifiers are selected, program will give random numbers
   if (passwordBox.length === 0) {
     passwordBox.push(numberList)
   }
@@ -80,6 +82,7 @@ for (var i = 0; i < passwordLength; i++) {
   generatedPassword += randomChar
 }
 
+//
 console.log(generatedPassword)
   return generatedPassword
 }
