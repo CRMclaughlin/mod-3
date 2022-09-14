@@ -1,13 +1,15 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+
+
 function randomInt(min, max){
   if (!max){
     max = min
     min = 0
   }
   var rand = Math.random()
-  return Math.floor(min*(1-rand) + rand*max)
+  return Math.floor(Math.random() * (max - min) ) + min;
 }
 
 function getRandomItem(list){
@@ -16,24 +18,27 @@ function getRandomItem(list){
 
 function generatePassword(){
   
-  var userInput = window.prompt("How many characters do you want your password to be?");
+  var userInput = prompt("How many characters for your password?");
   
   var passwordLength = parseInt(userInput)
 
-  if (isNaN(passwordLength)){
-    window.alert("That's not a number!")
+// Check for correct numbers to be used and password length 
+if (isNaN(passwordLength)){
+    alert("Please select a number between 8 - 128!")
     return
   } 
 
   if (passwordLength < 8 || passwordLength > 128){
-    window.alert("Password length must be between 8 and 128 characters")
+    alert("Password length must be between 8 and 128 characters")
     return
   }
   
-  var userWantNumbers = window.confirm("Would you like to include numbers in your password?")
-  var userWantLower = window.confirm("Would you like to include lowercase letters in your password?")
-  var userWantUpper = window.confirm("Would you like to include uppercase letters in your password?")
-  var userWantSpecial = window.confirm("Would you like to include special charaters in your password?")
+  // prompts for user to select which characters to use
+ 
+  var userWantNumbers = confirm("Would you like to include numbers in your password?")
+  var userWantLower = confirm("Would you like to include lowercase letters in your password?")
+  var userWantUpper = confirm("Would you like to include uppercase letters in your password?")
+  var userWantSpecial = confirm("Would you like to include special charaters in your password?")
 
   var numberList = ["0", "1", "2", "3","4","5","6","7","8","9"]
   var specialList = ["!","@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "=", "-", "`", "~", "<", ">", "/", "?", ":", ";|"]
@@ -46,6 +51,7 @@ function generatePassword(){
     uppercaseList[i] = lowercaseList[i].toUpperCase()
   }
 
+  //.push adds characters to open array passwordBox
   if (userWantNumbers === true){
     passwordBox.push(numberList)
   }
@@ -75,6 +81,7 @@ for (var i = 0; i < passwordLength; i++) {
 }
 
 console.log(generatedPassword)
+  return generatedPassword
 }
 
 
