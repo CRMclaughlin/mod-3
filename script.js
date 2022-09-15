@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 
-
+// function to get a random integer
 function randomInt(min, max){
   if (!max){
     max = min
