@@ -18,7 +18,7 @@ function getRandomItem(list){
 
 function generatePassword(){
   
-  var userInput = prompt("How many characters for your password?");
+  var userInput = prompt("How many characters for your password? Pick a number between 8 - 128.");
   
   var passwordLength = parseInt(userInput)
 
